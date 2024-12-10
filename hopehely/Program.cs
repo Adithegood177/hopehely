@@ -9,9 +9,10 @@
 			bool fut = true;
 			string nev = "";
 			int szam = 0;
-			while (fut)
+			do
 			{
-				try {
+				try
+				{
 					Console.WriteLine("Kérem adja meg a hógömbhöz elemet: ");
 					nev = Console.ReadLine();
 					//throw new ArgumentException("Nem lehet üres"); 
@@ -29,7 +30,8 @@
 				catch (FormatException) { Console.WriteLine("Hiba"); }
 				catch (Exception ex) { Console.WriteLine($"{ex.Message}"); }
 
-				try {
+				try
+				{
 					Console.WriteLine("Kérem adja meg a hogy hány darabot tegyünk bele: ");
 					szam = Convert.ToInt32(Console.ReadLine());
 					//int count = int.Parse(Console.ReadLine());
@@ -55,7 +57,8 @@
 				int count = 0;
 
 				try
-				{ Console.WriteLine("Kérem adja meg hanyadik elemet távolitsuk el: ");
+				{
+					Console.WriteLine("Kérem adja meg hanyadik elemet távolitsuk el: ");
 					count = int.Parse(Console.ReadLine());
 					if (count < 1 && count > hoElemNev.Count())
 					{ throw new Exception("Túl kicsi vagy túl nagy"); }
@@ -76,12 +79,12 @@
 					Console.WriteLine("Kérem adja meg a hógömbhöz elemet: ");
 					bekeres = Console.ReadLine();
 
-					if(String.IsNullOrEmpty(bekeres)) { throw new Exception("hiba"); }
+					if (String.IsNullOrEmpty(bekeres)) { throw new Exception("hiba"); }
 					if (bekeres != "i" && bekeres != "y") { throw new Exception("hiba"); }
 
-	
-					throw new ArgumentException("Nem lehet üres"); 
-					
+
+					throw new ArgumentException("Nem lehet üres");
+
 
 
 
@@ -90,7 +93,7 @@
 				catch (OverflowException) { Console.WriteLine("Hiba"); }
 				catch (FormatException) { Console.WriteLine("Hiba"); }
 				catch (Exception ex) { Console.WriteLine($"{ex.Message}"); }
-
-			}
+				if (bekeres == "y") { fut = false; }
+			} while (fut);
 		}
 	} }
