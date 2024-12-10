@@ -13,7 +13,7 @@
 			{
 				try {
 					Console.WriteLine("Kérem adja meg a hógömbhöz elemet: ");
-					 nev = Console.ReadLine();
+					nev = Console.ReadLine();
 					//throw new ArgumentException("Nem lehet üres"); 
 					//string.IsNullOrWhiteSpace
 					if (nev == null)
@@ -25,11 +25,11 @@
 						throw new Exception("Nem jó bemenet");
 					}
 				}
-				catch(OverflowException) { Console.WriteLine("Hiba"); }
+				catch (OverflowException) { Console.WriteLine("Hiba"); }
 				catch (FormatException) { Console.WriteLine("Hiba"); }
-				catch(Exception ex) { Console.WriteLine($"{ex.Message}"); }
+				catch (Exception ex) { Console.WriteLine($"{ex.Message}"); }
 
-				try { 
+				try {
 					Console.WriteLine("Kérem adja meg a hogy hány darabot tegyünk bele: ");
 					szam = Convert.ToInt32(Console.ReadLine());
 					//int count = int.Parse(Console.ReadLine());
@@ -45,10 +45,52 @@
 				hoElemNev.Add(nev);
 				hoElemSzam.Add(szam);
 
-				
-				
+				Console.WriteLine("Hógömb megtekintés:");
+				for (int i = 0; i < szam; i++)
+				{
+					Console.WriteLine($"{i + 1}. {hoElemNev[i]} -- {hoElemSzam[i]}");
+
+				}
+
+				int count = 0;
+
+				try
+				{ Console.WriteLine("Kérem adja meg hanyadik elemet távolitsuk el: ");
+					count = int.Parse(Console.ReadLine());
+					if (count < 1 && count > hoElemNev.Count())
+					{ throw new Exception("Túl kicsi vagy túl nagy"); }
+
+					throw new ArgumentException("hiba");
+
+				}
+				catch (OverflowException) { Console.WriteLine("Hiba"); }
+				catch (FormatException) { Console.WriteLine("Hiba"); }
+				catch (Exception ex) { Console.WriteLine($"{ex.Message}"); }
+				count -= 1;
+				hoElemNev.RemoveAt(count);
+				hoElemSzam.RemoveAt(count);
+				string bekeres = "";
+				Console.WriteLine("Ki akar lépni?  i/y");
+				try
+				{
+					Console.WriteLine("Kérem adja meg a hógömbhöz elemet: ");
+					bekeres = Console.ReadLine();
+
+					if(String.IsNullOrEmpty(bekeres)) { throw new Exception("hiba"); }
+					if (bekeres != "i" && bekeres != "y") { throw new Exception("hiba"); }
+
+	
+					throw new ArgumentException("Nem lehet üres"); 
+					
+
+
+
+
+				}
+				catch (OverflowException) { Console.WriteLine("Hiba"); }
+				catch (FormatException) { Console.WriteLine("Hiba"); }
+				catch (Exception ex) { Console.WriteLine($"{ex.Message}"); }
 
 			}
 		}
-	}
-}
+	} }
